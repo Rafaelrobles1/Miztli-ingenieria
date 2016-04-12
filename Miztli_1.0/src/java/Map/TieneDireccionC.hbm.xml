@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-abr-2016 14:10:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Map.TieneDireccionC" table="tiene_direccion_c" schema="public" optimistic-lock="version">
+        <id name="cuarto" type="int">
+            <column name="cuarto" />
+            <generator class="assigned" />
+        </id>
+        <property name="direccionC" type="int">
+            <column name="direccion_c" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
