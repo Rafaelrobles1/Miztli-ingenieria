@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Miztli_2</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">aaron</property>
+    <mapping resource="Map/Contrato.hbm.xml"/>
+    <mapping resource="Map/DireccionCuarto.hbm.xml"/>
+    <mapping resource="Map/Cuarto.hbm.xml"/>
+    <mapping resource="Map/TieneDireccionC.hbm.xml"/>
+    <mapping resource="Map/DireccionUsuario.hbm.xml"/>
+    <mapping resource="Map/Usuario.hbm.xml"/>
+    <mapping resource="Map/Prestador.hbm.xml"/>
+    <mapping resource="Map/Evaluacion.hbm.xml"/>
+    <mapping resource="Map/TieneDireccionU.hbm.xml"/>
+    <mapping resource="Map/TieneEvaluacionC.hbm.xml"/>
+    <mapping resource="Map/TieneContratoU.hbm.xml"/>
+    <mapping resource="Map/TieneCuarto.hbm.xml"/>
+    <mapping resource="Map/Estudiante.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-abr-2016 23:56:07 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Map.Cuarto" table="cuarto" schema="public" optimistic-lock="version">
+        <id name="idCuarto" type="int">
+            <column name="id_cuarto" />
+            <generator class="assigned" />
+        </id>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <property name="fotoC" type="binary">
+            <column name="foto_c" />
+        </property>
+        <property name="observacionesC" type="string">
+            <column name="observaciones_c" length="150" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
