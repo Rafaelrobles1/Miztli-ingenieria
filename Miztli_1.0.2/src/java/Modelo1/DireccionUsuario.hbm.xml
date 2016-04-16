@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/04/2016 11:24:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo1.DireccionUsuario" table="direccion_usuario" schema="public" optimistic-lock="version">
+        <id name="idDireccionU" type="int">
+            <column name="id_direccion_u" />
+            <generator class="assigned" />
+        </id>
+        <property name="paisU" type="string">
+            <column name="pais_u" length="20" not-null="true" />
+        </property>
+        <property name="estadoU" type="string">
+            <column name="estado_u" length="20" not-null="true" />
+        </property>
+        <property name="delegacionU" type="string">
+            <column name="delegacion_u" length="20" not-null="true" />
+        </property>
+        <property name="codigoPostalU" type="int">
+            <column name="codigo_postal_u" not-null="true" />
+        </property>
+        <property name="calleU" type="string">
+            <column name="calle_u" length="50" not-null="true" />
+        </property>
+        <property name="coloniaU" type="string">
+            <column name="colonia_u" length="20" not-null="true" />
+        </property>
+        <set name="tieneDireccionUs" table="tiene_direccion_u" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="direccion" not-null="true" />
+            </key>
+            <one-to-many class="Modelo1.TieneDireccionU" />
+        </set>
+        
+        
+        <sql-query name="BuscaPorDireccion">
+	<return alias="Usuario" class="Modelo1.Usuario"/>
+        <![CDATA[ select * 
+                    from Usuario as u, tiene_direccion_u as t, direccion_usuario as d 
+                    where u.correo = :correo1 and u.id_usuario = :t.usuario
+                    ]]>
+    </sql-query>
+    </class>
+</hibernate-mapping>
