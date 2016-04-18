@@ -7,6 +7,8 @@ package beans;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,6 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "DireccionUsuario.findByCodigoPostalU", query = "SELECT d FROM DireccionUsuario d WHERE d.codigoPostalU = :codigoPostalU"),
     @NamedQuery(name = "DireccionUsuario.findByCalleU", query = "SELECT d FROM DireccionUsuario d WHERE d.calleU = :calleU"),
     @NamedQuery(name = "DireccionUsuario.findByColoniaU", query = "SELECT d FROM DireccionUsuario d WHERE d.coloniaU = :coloniaU")})
+
+@ManagedBean
+@SessionScoped
 public class DireccionUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -88,8 +88,10 @@ public class Milogin {
         
     }
     public String daDireccion(){
-        Modelo1.DireccionUsuario dir=helper.getLoginPorDireccion(usuario);
-        String res=dir.toString();
+        
+        int miId=correo.getIdUsuario();
+        Modelo1.DireccionUsuario dir=helper.getLoginPorDireccion(miId);
+        String res=dir.getCalleU();
         return res;
     }
     /**

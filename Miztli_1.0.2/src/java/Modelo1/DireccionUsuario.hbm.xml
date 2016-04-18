@@ -34,12 +34,6 @@
         </set>
         
         
-        <sql-query name="BuscaPorDireccion">
-	<return alias="Usuario" class="Modelo1.Usuario"/>
-        <![CDATA[ select * 
-                    from Usuario as u, tiene_direccion_u as t, direccion_usuario as d 
-                    where u.correo = :correo1 and u.id_usuario = :t.usuario
-                    ]]>
-    </sql-query>
+        
     </class>
 </hibernate-mapping>

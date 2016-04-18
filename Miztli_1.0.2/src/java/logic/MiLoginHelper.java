@@ -7,6 +7,7 @@ package logic;
 
 
 import Modelo1.Usuario;
+import Modelo1.TieneDireccionU;
 import Modelo1.DireccionUsuario;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -53,10 +54,10 @@ public class MiLoginHelper {
         return null;
     }
 
-    public DireccionUsuario getLoginPorDireccion(String usuario) {
+    public DireccionUsuario getLoginPorDireccion(int IdUsuario) {
         try {
             Transaction tx = session.beginTransaction();
-            Query q = session.getNamedQuery("BuscaPorDireccion").setString("correo1", usuario );
+            Query q = session.getNamedQuery("BuscaPorDireccion").setInteger("Id1", IdUsuario );
             return (DireccionUsuario) q.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
