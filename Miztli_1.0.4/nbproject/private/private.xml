@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/src/java/beans/Login.java</file>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/web/Principal.xhtml</file>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/src/java/beans/Logout.java</file>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/src/java/logic/LoginHelper.java</file>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/src/java/logic/HibernateUtil.java</file>
+            <file>file:/home/salador/NetBeansProjects/Miztli_1.0.4/src/java/model/Usuario.java</file>
+        </group>
+    </open-files>
+</project-private>
