@@ -1,0 +1,82 @@
+
+  .boton_personalizado{
+    
+     padding-bottom: 10px;
+     padding-top: 10px;
+     text-align: center;
+     margin-left: 1200px; 
+     
+     background-color: #8BB9C7;
+     border-radius: 0px 0px 7px 7px;
+     box-shadow: 0px 0px 2px white, 0px 2px 2px rgba(0, 0, 0, 0.2), 0px 0px 2px white inset;
+     
+  }
+
+  .boton_personalizado1{
+    
+     padding-bottom: 10px;
+     padding-top: 10px;
+     text-align: center;
+     margin-left: 50px; 
+     
+     background-color: #8BB9C7;
+     border-radius: 0px 0px 7px 7px;
+     box-shadow: 0px 0px 2px white, 0px 2px 2px rgba(0, 0, 0, 0.2), 0px 0px 2px white inset;
+  }
+  
+   .boton_personalizado2{
+    
+     padding-bottom: 10px;
+     padding-top: 10px;
+     text-align: center;
+     margin-left: 50px; 
+     
+     
+  }
+  
+  .mitexto{
+     padding-bottom: 10px;
+     padding-top: 10px;
+    text-align: center;
+     margin-left: 50px; 
+  }
+  
+  .mi_imagen{
+     padding-bottom: 10px;
+     padding-top: 10px;
+    text-align: center;
+     margin-left: 250px; 
+  }
+
+.info
+{
+  background-color: #F3F3F3;
+  border-radius: 7px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4), 0px 0px 4px white inset, 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  width: 270px;
+  
+  margin-bottom: 520px;
+  
+}
+
+.formulario
+{
+ background-color: #F3F3F3;
+  border-radius: 7px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4), 0px 0px 4px white inset, 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  width: 270px;
+}
+.contenedorLogin {
+  margin-left: 80%;
+  margin-top: -35%;
+  text-align: center;
+  position: absolute;
+ 
+}
