@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Principal Usuario</title>
+        <link rel="stylesheet" href="micsss.css"/>
+        <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+        <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+    </head>
+    <body>
+        <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Pincipal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>
+       
+       
+        
+        <h1 class="mitexto">Pagina Principal Prestador</h1>
+        <img class ="mi_imagen" src="foto.jpg" > </img>
+        
+        <section class="info">
+           
+            Info de usuario
+            <p><h:outputLabel value="Mi ID Usuario: "/><h:outputText value="#{milogin.daIdUsuario()}" style="font-weight:bold"/></p>
+            <p><h:outputLabel value="Usuario: "/><h:outputText value="#{milogin.daUsuario()}" style="font-weight:bold"/></p>
+            
+            <p><h:outputLabel value="Correo: "/><h:outputText value="#{milogin.usuario}" style="font-weight:bold"/></p>
+            <p><h:outputLabel value="Telefono: "/><h:outputText value="#{milogin.daTelefono()}" style="font-weight:bold"/></p>           
+            
+            <p><h:outputLabel value="Calle: "/><h:outputText value="#{milogin.daCalle()}" style="font-weight:bold"/></p>           
+            <p><h:outputLabel value="Colonia: "/><h:outputText value="#{milogin.daColonia()}" style="font-weight:bold"/></p>           
+            <p><h:outputLabel value="Delegacion: "/><h:outputText value="#{milogin.daDelegacion()}" style="font-weight:bold"/></p>           
+            <p><h:outputLabel value="Estado: "/><h:outputText value="#{milogin.daEstado()}" style="font-weight:bold"/></p>           
+            <p><h:outputLabel value="Pais: "/><h:outputText value="#{milogin.daPais()}" style="font-weight:bold"/></p>           
+            <p><h:outputLabel value="Telefono: "/><h:outputText value="#{milogin.daTelP()}" style="font-weight:bold"/></p>           
+            
+            <p><h:outputLabel value="Cuartos: "/><h:outputText value="#{milogin.daCuartos()}" style="font-weight:bold"/></p>           
+            <h5> P R O B A N D O</h5>
+            
+            <h:form class="BOTONES">
+                <section class="seccionBotones">
+                    <h:commandButton value="Cerrar Sesión" action="#{mylogout.cerrarSession()}"/>
+                    <h:commandButton value="Evaluar" action="#{evaluar.evaluarUsuario()}"/>
+                    
+                    <h:commandButton value="Editar_Cuarto" action="#{milogin.EditarCuarto()}"  />
+                   <h:commandButton value="Crear_Cuarto" action="#{milogin.CrearCuarto()}"  />
+                   
+                   
+                   
+                   <h:commandButton value="Editar_Perfil" action="#{milogin.EditarPrestador()}"  />
+                   <h:commandButton value="Eliminar_Perfil" action="#{milogin.EliminarPrestador()}"  />
+                </section>
+            </h:form>
+            
+        </section>
+
+
+    </body>
+</html>

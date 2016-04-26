@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+  <h:head>
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="css/cssInfoCuarto.css"/>
+  </h:head>
+  <h:body>
+    <section class="contenedorLogin">
+      <h:form class="formulario">
+        <h2>Registro de Usuario</h2>
+         <p style="font-weight:bold"> ¿Qué tipo de cuenta deseas crear?</p>
+         <h:commandButton value="Estudiante" action="#{estudiante.regEstudiante()}" />
+         <h:commandButton value="Prestador"  action="#{estudiante.regPrestador()}" />
+      </h:form>
+        
+    </section>
+  </h:body>
+</html>
