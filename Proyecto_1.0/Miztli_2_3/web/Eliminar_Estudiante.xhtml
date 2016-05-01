@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Eliminar C</title>
+        <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+    </h:head>
+    <h:body>
+        <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Pincipal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>
+        <section class="contenedorLogin">
+            <h2>Eliminar un Usuario con las siguientes características: </h2>
+            <h:form>
+               
+                <p>Nombre: <h:outputText value="#{jBean_1.nombre}"/></p>
+                <p>Apellido Paterno: <h:outputText value="#{jBean_1.apellidoPaterno}"/></p>
+                <p>Apellido Materno: <h:outputText value="#{jBean_1.apellidoMaterno}"/></p>
+                <p>Carrera: <h:outputText value="#{jBean_1.carrera}"/></p>
+                <p>Correo: <h:outputText value="#{jBean_1.correo}"/></p>
+                <p>Facultad: <h:outputText value="#{jBean_1.facultad}"/></p>
+                <p>Telefono: <h:outputText value="#{jBean_1.telefono}"/></p>
+                <p>IdDireccion: <h:outputText value="#{jBean_1.idDireccionU}"/></p>
+                <p>Pais: <h:outputText value="#{jBean_1.paisU}"/></p>
+                <p>Estado: <h:outputText value="#{jBean_1.estadoU}"/></p>
+                <p>Delegacion: <h:outputText value="#{jBean_1.delegacionU}"/></p>
+                <p>CP: <h:outputText value="#{jBean_1.codigoPostalU}"/></p>
+                <p>Calle: <h:outputText value="#{jBean_1.calleU}"/></p>
+                <p>Colonia: <h:outputText value="#{jBean_1.coloniaU}"/></p>
+                aceptar para confirmar la eliminación:
+                
+                <section class="seccionBotones">
+                    <h:commandButton value="Aceptar" action="#{jBean_1.eliminarUsuario()}"/>
+                    <h:commandButton value="Cancelar" action="Principal"/>
+                    <br/>
+                </section>
+            </h:form>
+        </section>
+    </h:body>
+</html>

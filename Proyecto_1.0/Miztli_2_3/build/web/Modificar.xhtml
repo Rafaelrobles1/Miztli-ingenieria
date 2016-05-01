@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Modificar C</title>
+        <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+    </h:head>
+    <h:body>
+        <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Pincipal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>
+        <section class="contenedorLogin">
+            <p>Modifica las siguientes características del cuarto: </p>
+            <h:form>
+                <p>ID: <h:outputText value="#{jBean.id}"/></p>
+                <p><h:outputText value="Delegación: *"/><br/>
+                    <h:inputText value="#{jBean.delegacionC}" required="true"/>
+                </p>
+                <p><h:outputText value="Código Postal: "/><br/>
+                    <h:inputText value="#{jBean.codigoPostalC}">
+                        <f:convertNumber integerOnly="true" type="number"/>
+                    </h:inputText></p>
+                <p><h:outputText value="Colonia: "/><br/>
+                    <h:inputText value="#{jBean.coloniaC}"/>
+                </p>
+                <p><h:outputText value="Calle y número: *"/><br/>
+                    <h:inputText value="#{jBean.calleC}" required="true"/>
+                </p>
+                <p><h:outputText value="Precio: *"/><br/>
+                    <h:inputText value="#{jBean.precio}" required="true">
+                        <f:convertNumber integerOnly="true" type="number"/>
+                    </h:inputText></p>
+                <p><h:outputText value="Observaciones: "/><br/>
+                    <h:inputTextarea rows="5" cols="30" value="#{jBean.observacionesC}"/>
+                </p>
+                Seleccione el ID y después aceptar para confirmar la edición:
+                <p>
+                    <h:inputText id="amount" value="#{jBean.id}">
+                        <f:convertNumber integerOnly="true" type="number"/>
+                    </h:inputText>
+                </p>
+                <section class="seccionBotones">
+                    <h:commandButton value="Guardar Cambios" action="#{jBean.modifC()}"/>
+                    <h:commandButton value="Cancelar" action="EditarCuarto"/>
+                    <br/>
+                </section>
+            </h:form>
+        </section>
+    </h:body>
+</html>
