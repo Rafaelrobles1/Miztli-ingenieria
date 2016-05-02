@@ -73,11 +73,11 @@ public class Milogin {
                   }else{
                       pres=helper.getLoginPorPrestador(correo.getIdUsuario());
                         
-                      if(daCuartos() <= 0){
-                          return "PrincipalUsuarioPrestador_1";
-                      } else {
+                      //if(daCuartos() == 0){
+                         // return "PrincipalUsuarioPrestador_1";
+                      //} else {
                           return "PrincipalUsuarioPrestador";
-                      }
+                      //}
                   }
                 }
             } catch (NoSuchAlgorithmException ex) {
