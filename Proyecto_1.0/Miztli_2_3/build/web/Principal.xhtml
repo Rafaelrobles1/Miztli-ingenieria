@@ -15,7 +15,9 @@ and open the template in the editor.
     </h:head>
     <h:body>
         
-        <seccion class="boton_personalizado"> <h:link value="Registrate" outcome="vistaTipoUsuario" /></seccion>
+        <seccion class="boton_personalizado"> 
+            <h:link value="Registrate" outcome="vistaTipoUsuario"/>
+        </seccion>
        
         <h1 class="mitexto"> Pagina Principal</h1> 
         <img class ="mi_imagen" src="Logo.png" > </img>
@@ -29,7 +31,8 @@ and open the template in the editor.
                     <h:messages infoStyle="color: blue;list-style:none;" errorStyle="color:red;list-style:none;"/>
                 <section class="seccionBotones">
                 <h:commandButton value="Ingresar" action="#{milogin.login1()}"  />
-          
+                
+                
               </section>
             </h:form>
         </section>

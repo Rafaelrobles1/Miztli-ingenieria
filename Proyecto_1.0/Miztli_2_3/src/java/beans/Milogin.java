@@ -85,9 +85,12 @@ public class Milogin {
             }
             
         }else{
-        
+        FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña inválidos", null));
             return "Principal";
         }
+        FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrectos", null));
     return "Principal";
     }
     

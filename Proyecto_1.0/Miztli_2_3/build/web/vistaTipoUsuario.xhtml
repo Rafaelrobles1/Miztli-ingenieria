@@ -11,13 +11,13 @@
               <a name="top"></a>
         <div id="header">Chantli UNAM</div>
         <ul id="navtop">
-          <li><a href="Principal.xhtml">Pincipal</a></li>
+          <li><a href="Principal.xhtml">Principal</a></li>
           <li><a href="ValidarSalida.xhtml">Salir</a></li>
         </ul>
     <section class="contenedorLogin">
-      <h:form class="formulario">
+        <h:form> <!--class="formulario"-->
         <h2>Registro de Usuario</h2>
-         <p style="font-weight:bold"> ¿Qué tipo de cuenta deseas crear?</p>
+        <p> ¿Qué tipo de cuenta deseas crear?</p>
          <h:commandButton value="Estudiante" action="#{estudiante1.regEstudiante()}" />
          <h:commandButton value="Prestador"  action="#{estudiante1.regPrestador()}" />
       </h:form>

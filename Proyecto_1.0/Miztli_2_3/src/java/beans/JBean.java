@@ -195,7 +195,7 @@ public class JBean implements Serializable {
         c = (Cuarto) session.get(Cuarto.class, id);
         TieneDireccionC t =(TieneDireccionC) session.get(TieneDireccionC.class, id);
         if(d != null && c != null){
-            session.delete(t);
+            //session.delete(t);
             session.delete(d);
             session.delete(c);
             

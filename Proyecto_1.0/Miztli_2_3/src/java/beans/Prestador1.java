@@ -256,6 +256,8 @@ public class Prestador1 implements Serializable {
             session.save(e);
             session.getTransaction().commit();
             session.close();
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_INFO, "Prestador "+getCorreo()+" registrado", null));
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null));
