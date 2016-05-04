@@ -1,2 +1,2 @@
 # Miztli-Ingeneria
-Este sera el ropositorio para el codigo que usaremos en el curso 
+Verificar nombre y contraseña con la base de datos antes de correr el Programa 
