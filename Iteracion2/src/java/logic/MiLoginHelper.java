@@ -14,7 +14,9 @@ import Modelo1.TieneCuarto;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 /**
  *
  * @author salador
@@ -22,6 +24,24 @@ import org.hibernate.Transaction;
 public class MiLoginHelper {
     private Session session;
 
+    private static final SessionFactory sessionFactory;
+    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+    
     public MiLoginHelper() {
         try{        
              session = HibernateUtil.getSessionFactory().openSession();
@@ -102,8 +122,22 @@ public class MiLoginHelper {
         return null;
     }
     
+    public Usuario getLoginPorUsuarioN(int IdUsuario) {
+        try {
+             session = HibernateUtil.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            Query q = session.getNamedQuery("BuscaPorUsuarioN").setInteger("Id1", IdUsuario );
+            return (Usuario) q.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+           session.close();
+       }
+        return null;
+    }
     
-        public List<Modelo1.TieneCuarto> getLoginPorListCuartos(int IdUsuario) {
+    
+    public List<Modelo1.TieneCuarto> getLoginPorListCuartos(int IdUsuario) {
         try {
              session = HibernateUtil.getSessionFactory().openSession();
             Transaction tx = session.beginTransaction();
@@ -133,5 +167,6 @@ public class MiLoginHelper {
        }
         
     }
-    
+ 
+     
 }

@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+//import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import logic.HibernateUtil;
 import Modelo1.Cuarto;
@@ -44,10 +44,10 @@ public class JBean implements Serializable {
     private List<Integer> ids;
     
     private String delegacionC;
-    private int codigoPostalC;
+    private String codigoPostalC;///////Cambios
     private String coloniaC;
     private String calleC;
-    private int precio;
+    private String precio; //////////Cambios
     private String observacionesC;
     
     ///////////////////////////////////////
@@ -87,11 +87,11 @@ public class JBean implements Serializable {
         this.delegacionC = delegacionC;
     }
 
-    public int getCodigoPostalC() {
+    public String getCodigoPostalC() {///////////
         return codigoPostalC;
     }
 
-    public void setCodigoPostalC(int codigoPostalC) {
+    public void setCodigoPostalC(String codigoPostalC) {//////////////7
         this.codigoPostalC = codigoPostalC;
     }
 
@@ -111,11 +111,11 @@ public class JBean implements Serializable {
         this.calleC = calleC;
     }
 
-    public int getPrecio() {
+    public String getPrecio() {///////////
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(String precio) {//////////
         this.precio = precio;
     }
 
@@ -151,19 +151,20 @@ public class JBean implements Serializable {
             idNew++;
             c = (Cuarto) session.get(Cuarto.class, idNew);
         }
-        d = new DireccionCuarto(idNew, delegacionC, codigoPostalC, coloniaC, calleC);
-        c = new Cuarto(idNew, precio, observacionesC);
+        
+        d = new DireccionCuarto(idNew, delegacionC, Integer.parseInt(codigoPostalC), coloniaC, calleC);
+        c = new Cuarto(idNew, Integer.parseInt(precio), observacionesC);
         if(d != null && c != null){
             session.save(d);
             session.save(c);
             session.getTransaction().commit();
             session.close();
             mensaje();
-            return "Principal";
+            return "prestador";
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null));
-            return "CrearCuarto";
+            return "crearCuarto";
         }
        
     }
@@ -175,12 +176,12 @@ public class JBean implements Serializable {
         c = (Cuarto) session.get(Cuarto.class, id);
         if(d != null && c != null){
             this.delegacionC = d.getDelegacionC();
-            this.codigoPostalC = d.getCodigoPostalC();
+            this.codigoPostalC = Integer.toString(d.getCodigoPostalC());
             this.coloniaC = d.getColoniaC();
             this.calleC = d.getCalleC();
-            this.precio = c.getPrecio();
+            this.precio = Integer.toString(c.getPrecio());
             this.observacionesC = c.getObservacionesC();
-            return "Eliminar";
+            return "eliminarC";
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
@@ -193,7 +194,7 @@ public class JBean implements Serializable {
         session.beginTransaction();
         d = (DireccionCuarto) session.get(DireccionCuarto.class, id);
         c = (Cuarto) session.get(Cuarto.class, id);
-        TieneDireccionC t =(TieneDireccionC) session.get(TieneDireccionC.class, id);
+        //TieneDireccionC t =(TieneDireccionC) session.get(TieneDireccionC.class, id);
         if(d != null && c != null){
             //session.delete(t);
             session.delete(d);
@@ -205,10 +206,10 @@ public class JBean implements Serializable {
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al eliminar cuarto "+id, null));
-            return "EditarCuarto";
+            return "editarCuarto";
         }
         
-        return "Principal";
+        return "prestador";
     }
     
     public String selecModificar(){
@@ -218,36 +219,76 @@ public class JBean implements Serializable {
         c = (Cuarto) session.get(Cuarto.class, id);
         if(d != null && c != null){
             this.delegacionC = d.getDelegacionC();
-            this.codigoPostalC = d.getCodigoPostalC();
+            this.codigoPostalC = Integer.toString(d.getCodigoPostalC());
             this.coloniaC = d.getColoniaC();
             this.calleC = d.getCalleC();
-            this.precio = c.getPrecio();
+            this.precio = Integer.toString(c.getPrecio());
             this.observacionesC = c.getObservacionesC();
-            return "Modificar";
+            return "modificarC";
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
         }
-        return "EditarCuarto";
+        return "editarCuarto";
     }
     
     public String modifC(){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
-         d = new DireccionCuarto(id, delegacionC, codigoPostalC, coloniaC, calleC);
-        c = new Cuarto(id, precio, observacionesC);
+         d = new DireccionCuarto(id, delegacionC, Integer.parseInt(codigoPostalC), coloniaC, calleC);
+        c = new Cuarto(id, Integer.parseInt(precio), observacionesC);
         if(d != null && c != null){
             session.update(d);
             session.update(c);
             session.getTransaction().commit();
             session.close();
             mensajeConfModif();
+            return "prestador";
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar cuarto "+id, null));
-            return "EditarCuarto";
+            return "editarCuarto";
         }
-        return "Principal";
+    }
+    
+    public String verInfoCuarto(){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        d = (DireccionCuarto) session.get(DireccionCuarto.class, id);
+        c = (Cuarto) session.get(Cuarto.class, id);
+        if(d != null && c != null){
+            this.delegacionC = d.getDelegacionC();
+            this.codigoPostalC = Integer.toString(d.getCodigoPostalC());
+            this.coloniaC = d.getColoniaC();
+            this.calleC = d.getCalleC();
+            this.precio = Integer.toString(c.getPrecio());
+            this.observacionesC = c.getObservacionesC();
+            return "verInfCuarto";
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
+        }
+        return "cuartosEstudiante";
+    }
+    
+    public String verInfoCuartoP(){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        d = (DireccionCuarto) session.get(DireccionCuarto.class, id);
+        c = (Cuarto) session.get(Cuarto.class, id);
+        if(d != null && c != null){
+            this.delegacionC = d.getDelegacionC();
+            this.codigoPostalC = Integer.toString(d.getCodigoPostalC());
+            this.coloniaC = d.getColoniaC();
+            this.calleC = d.getCalleC();
+            this.precio = Integer.toString(c.getPrecio());
+            this.observacionesC = c.getObservacionesC();
+            return "verInfCuartoP";
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
+        }
+        return "cuartosP";
     }
     
     public void mensaje() {
@@ -262,7 +303,7 @@ public class JBean implements Serializable {
     
     public void mensajeConfModif(){
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Cuarto Modificado"));
+                new FacesMessage("Cuarto "+id+ " Modificado"));
     }
     
 }

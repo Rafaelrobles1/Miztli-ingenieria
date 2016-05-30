@@ -14,8 +14,21 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"/>
         <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"/>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+        
+        <link rel="stylesheet" href="salir.css"/>
+        <script src="salir.js"></script>
     </head>
     <body>
+        
+        <div id="dialogoverlay"></div>
+        <div id="dialogbox">
+        <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+        </div>
+        </div>
+        
         <div class="bg1">
             <div class="bg2">
                 <div class="main">
@@ -29,9 +42,9 @@ and open the template in the editor.
         <nav>
           <ul id="menu">
              <li class="active"><h:link value="Principal" outcome="prestador"/></li>
-             <li><h:link value="Información" outcome="informacion"/></li>
-             <li><h:link value="Cuartos" outcome="cuartos"/></li>
-             <li><h:link value="Salir" outcome="principal"/></li>
+             <li><h:link value="Información" outcome="informP"/></li>
+             <li><h:link value="Cuartos" outcome="cuartosP"/></li>
+             <li><h:link value="Salir" onclick="Confirm.render('Estas apunto de salir, continuar?')"/></li>
           </ul>
         </nav>
         <!-- header end -->
@@ -45,23 +58,23 @@ and open the template in the editor.
                         <h:commandButton value="Evaluar"/>
                     </div>
                     <div class="button2">
-                        <h:commandButton value="Crear Cuarto"/>
+                        <h:commandButton value="Crear Cuarto" action="crearCuarto"/>
                     </div>
                     <div class="button2">
-                        <h:commandButton value="Editar Cuarto"/>
+                        <h:commandButton value="Editar Cuarto" action="editarCuarto"/>
                     </div>
                     <div class="button2">
-                        <h:commandButton value="Eliminar Perfil"/>
+                           <h:commandButton value="Eliminar_Perfil" action="#{milogin.EliminarPrestador()}"  />
                     </div>
                 </h:form>
               <div class="col2 pad">
-                <h2>Perfil</h2>
+                <h2>Perfil </h2>
                 <p><h:outputLabel value="Usuario: "/><h:outputText value="#{milogin.daUsuario()}"/></p>
-                <p><h:outputLabel value="Correo: "/><h:outputText value="#{milogin.usuario}"/></p>
+                <p><h:outputLabel value="Correo: "/><h:outputText value="#{milogin.daCorreo1()}"/></p>
                 <p><h:outputLabel value="Telefono: "/><h:outputText value="#{milogin.daTelefono()}"/></p>
                 <h:form id="ContactForm">
                         <div class="button1">
-                            <h:commandButton value="Editar Perfil"/> 
+                            <h:commandButton value="Editar_Perfil" action="#{milogin.EditarPrestador( )}"  />
                         </div>
                     </h:form>
                      

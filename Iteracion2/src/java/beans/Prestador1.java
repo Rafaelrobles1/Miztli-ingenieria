@@ -335,7 +335,9 @@ public class Prestador1 implements Serializable {
             c = (Modelo1.Prestador) session.get(Modelo1.Prestador.class, idNew);
         }
         this.idUsuario =idNew;
-         Modelo1.Prestador e = new Modelo1.Prestador(this.idUsuario,this.nombre,this.apellidoPaterno,this.apellidoMaterno, this.correo,this.telefono,cryptMD5(this.contrasenya),0);
+         Modelo1.Prestador e = new Modelo1.Prestador(this.idUsuario,
+                 this.nombre,this.apellidoPaterno,this.apellidoMaterno,
+                 this.correo,this.telefono,cryptMD5(this.contrasenya),0);
         if(e != null){
             session.save(e);
             session.getTransaction().commit();

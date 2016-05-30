@@ -7,16 +7,17 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <head>
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
         <title>Inicio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"/>
         <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"/>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
         
-    </head>
-    <body>
+    </h:head>
+    <h:body>
          <div class="bg1">
             <div class="bg2">
                 <div class="main">
@@ -47,32 +48,19 @@ and open the template in the editor.
                     <div class="row">
                         <h:inputSecret id="contraseña" pt:placeholder="Contraseña" value="#{milogin.contrasena}" required="true"/>
                     </div>
+                    <h:messages infoStyle="color: blue;list-style:none;" errorStyle="color:red;list-style:none;"/>
                     <div class="button2">
-                        <h:commandButton value="Ingresar" action="#{milogin.login1()}"/>
+                        <h:commandButton id="ingresa" value="Ingresar" action="#{milogin.login1()}"/>
                     </div>
                 </h:form>
+                
               <div class="col2 pad">
-                <h2>Registrar</h2>
+                <h2>¡Registrate es gratis!</h2>
                 <h:form id="ContactForm">
-                        <h1>Datos personales:</h1><br/><br/><br/><br/>
-                        <div class="row"><h:inputText class="input" pt:placeholder="Nombre"/></div>
-                        <div class="row"><h:inputText class="input" pt:placeholder="Apellido Paterno"/></div>
-                        <div class="row"><h:inputText class="input" pt:placeholder="Apellido Materno" /></div>
-                        <div class="row"><h:inputText class="input" pt:placeholder="Telefono" /></div>
-                        <h1>Información de la cuenta:</h1><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                        <div class="row"><h:inputText class="input" pt:placeholder="Correo Electrónico"/></div>
-                        <div class="row"><h:inputSecret class="input" pt:placeholder="Contraseña"/></div>
-                        <div class="row"><h:inputSecret class="input" pt:placeholder="Confirmar Contraseña"/></div>
-                        <h1>Seleccione el tipo de usuario que desea registrar:</h1>
-                        <br/><br/><br/><br/><br/><br/><br/><br/>
-                        Si desea buscar un cuarto para alojarse.<br/>
-                        <div class="button1">
-                            <h:commandButton value="Estudiante"/> 
-                        </div><br/><br/>
-                        Si desea dar a rentar un cuarto para estudiantes.<br/>
-                        <div class="button1">
-                            <h:commandButton value="Prestador"/>
+                    <div class="button1">
+                            <h:commandButton value="Registrar" action="registrar"/>
                         </div>
+                       
                     </h:form>
                      
               </div>
@@ -118,5 +106,5 @@ and open the template in the editor.
     </div>
   </div>
 </div>
-    </body>
+    </h:body>
 </html>

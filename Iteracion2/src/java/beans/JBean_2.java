@@ -7,6 +7,10 @@
 package beans;
 
 import Modelo1.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.inject.Named;
 //import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,6 +18,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +27,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import logic.HibernateUtil;
+import logic.MiLoginHelper;
 
 import org.hibernate.Session;
 
@@ -35,6 +42,7 @@ import org.hibernate.Session;
 public class JBean_2 implements Serializable {
 
     private HibernateUtil helper;
+    private MiLoginHelper helper1;
     private Session session;
 
     private Usuario u;
@@ -52,10 +60,12 @@ public class JBean_2 implements Serializable {
     private String correo;
     private String telefono;
     private String contrasenya;
-
-
+    int IdSession=0;
+    Modelo1.Prestador Upres; 
+    Modelo1.DireccionUsuario Dir;
     //////////////////////////////////////
     public JBean_2() {
+        carga();
     }
 
     public List<Integer> getIds() {
@@ -79,7 +89,72 @@ public class JBean_2 implements Serializable {
     }
 
     public void setIdUsuario(int idUsuario) {
+        carga();
         this.idUsuario = idUsuario;
+    }
+    
+     public void CargaNum(){
+    String cadena=null;
+        BufferedReader b=null;
+        FileReader f;
+            try {
+                f = new FileReader("/home/salador/Documentos/Ing s/Iteracion2/archivo.txt"); 
+                b = new BufferedReader(f);
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+            try {
+                cadena = b.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                b.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        helper1 = new MiLoginHelper();
+        IdSession=Integer.parseInt(cadena);
+    
+    }
+    
+     public void carga(){
+    String cadena=null;
+        BufferedReader b=null;
+        FileReader f;
+            try {
+                f = new FileReader("/home/salador/Documentos/Ing s/Iteracion2/archivo.txt"); 
+                b = new BufferedReader(f);
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+            try {
+                cadena = b.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                b.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        helper1 = new MiLoginHelper();
+        IdSession=Integer.parseInt(cadena);
+        Upres = helper1.getLoginPorPrestador(IdSession);
+        Dir=helper1.getLoginPorDireccion(IdSession);
+        idUsuario=Upres.getIdUsuario();
+        nombre=Upres.getNombre();
+        
+        apellidoPaterno=Upres.getApellidoPaterno();
+        apellidoMaterno=Upres.getApellidoMaterno();
+        correo=Upres.getCorreo();
+        telefono=Upres.getTelefono();
+        
+       
     }
 
     public String getNombre() {
@@ -160,12 +235,12 @@ public class JBean_2 implements Serializable {
             this.correo = p.getCorreo();
             this.telefono = p.getTelefono();
             
-            return "Eliminar_Prestador";
+            return "eliminarPrestador";
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
         }
-        return "Principal";
+        return "prestador";
     }
 
     public String eliminarUsuario() {////pasa como parametro un entero y en el mensaje de error imprimero
@@ -185,50 +260,46 @@ public class JBean_2 implements Serializable {
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al eliminar cuarto " + id, null));
-            return "Principal";
+            return "prestador";
         }
 
-        return "Principal";
+        return "prestador";
     }
 
-    public String selecModificar() {
-        session = helper.getSessionFactory().openSession();
-        session.beginTransaction();
-         u = (Usuario) session.get(Usuario.class, idUsuario);
-        p = (Prestador) session.get(Prestador.class, idUsuario);
-        if (u != null && p != null) {
-            this.nombre=p.getNombre();
-            this.idUsuario = p.getIdUsuario();
-            this.apellidoMaterno = p.getApellidoMaterno();
-            this.apellidoPaterno = p.getApellidoPaterno();
-            this.correo = p.getCorreo();
-            this.telefono = p.getTelefono();
-            return "Modificar_Prestador";
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
-        }
-        return "Principal";
-    }
 
     
     public String modifC() throws NoSuchAlgorithmException {
+        
+        CargaNum();
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
-        p=new Prestador(idUsuario, nombre, apellidoPaterno, apellidoMaterno, correo, telefono, p.getContrasenya(), p.getCuartosDisponibles());
-        //u= new Usuario(idUsuario, nombre, apellidoPaterno, apellidoMaterno, correo, telefono, contrasenya);
-        if (p != null) {
-            session.update(p);
-           // session.update(u);
+        Prestador p1 =(Prestador)session.get(Prestador.class, IdSession);
+        
+        if (p1 != null) {
+            p1.setNombre(getNombre());
+            p1.setApellidoMaterno(getApellidoMaterno());
+            p1.setApellidoPaterno(getApellidoPaterno());
+            p1.setTelefono(getTelefono());
+            p1.setCorreo(getCorreo());
+            
+            
+         } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Id incorrecto", null));
+            }
+        
+        
+        if (p1 != null) {
+            session.update(p1);
             session.getTransaction().commit();
             session.close();
             mensajeConfModif();
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar usuario " + id, null));
-            return "Principal";
+            return "prestador";
         }
-        return "Principal";
+        return "prestador";
     }
 
     public void mensaje() {
@@ -247,31 +318,8 @@ public class JBean_2 implements Serializable {
     }
 
      public String cancela(){
-    return "Principal";
+    return "prestador";
         
     }
-//    public String CrearCuarto(){
-//        idNew = 1;
-//        session = helper.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        c = (Cuarto) session.get(Cuarto.class, idNew);
-//        while(c != null){
-//            idNew++;
-//            c = (Cuarto) session.get(Cuarto.class, idNew);
-//        }
-//        d = new DireccionCuarto(idNew, delegacionC, codigoPostalC, coloniaC, calleC);
-//        c = new Cuarto(idNew, precio, observacionesC);
-//        if(d != null && c != null){
-//            session.save(d);
-//            session.save(c);
-//            session.getTransaction().commit();
-//            session.close();
-//            mensaje();
-//        }else{
-//            FacesContext.getCurrentInstance().addMessage(null,
-//            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null));
-//            return "CrearCuarto";
-//        }
-//        return "PrincipalUsuarioPrestador";
-//    }
+
 }

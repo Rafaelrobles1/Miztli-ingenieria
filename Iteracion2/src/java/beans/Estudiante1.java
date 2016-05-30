@@ -337,12 +337,14 @@ public class Estudiante1 implements Serializable {
             idNew++;
             c = (Modelo1.Estudiante) session.get(Modelo1.Estudiante.class, idNew);
         }
-        this.idUsuario =idNew;
-         Modelo1.Estudiante e = new Modelo1.Estudiante(this.idUsuario,this.nombre,this.apellidoPaterno,this.apellidoMaterno, this.correo,this.telefono,null,cryptMD5(this.contrasenya),this.facultad,this.carrera,null);
+        this.idUsuario = idNew;
+         Modelo1.Estudiante e = new Modelo1.Estudiante(this.idUsuario,this.nombre,this.apellidoPaterno,this.apellidoMaterno, this.correo,this.telefono,null,cryptMD5(this.contrasenya),"Por asignar","Por asignar",null);
         if(e != null){
             session.save(e);
             session.getTransaction().commit();
             session.close();
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Estudiante "+ nombre + " Creado"));
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
             new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null));
@@ -368,5 +370,39 @@ public class Estudiante1 implements Serializable {
         }
     
         return "Principal.xhtml";
+    }
+    
+    public String registrarEstudiante() {
+        int idNew =200;
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Modelo1.Estudiante c = (Modelo1.Estudiante) session.get(Modelo1.Estudiante.class, idNew);
+        while(c != null){
+            idNew++;
+            c = (Modelo1.Estudiante) session.get(Modelo1.Estudiante.class, idNew);
+        }
+        this.idUsuario = idNew;
+        if(this.contrasenya.equals(this.contrasenyav)){
+            Modelo1.Estudiante e = new Modelo1.Estudiante(this.idUsuario,
+            this.nombre,this.apellidoPaterno,this.apellidoMaterno,
+            this.correo,this.telefono,null,cryptMD5(this.contrasenya),"Por asignar","Por asignar",null);
+        //if(e != null){
+            session.save(e);
+            session.getTransaction().commit();
+            session.close();
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Estudiante "+ nombre + " Creado"));
+        }
+        /* if(this.contrasenya == null){
+             FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage( "Nombre: "+this.nombre));
+         }*/
+         else{
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "La contraseña no coincide", null));
+            return "principal";
+        }
+    
+        return "principal";
     }
 }

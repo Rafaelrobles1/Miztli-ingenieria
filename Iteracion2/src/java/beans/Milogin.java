@@ -5,6 +5,16 @@
  */
 package beans;
 
+import Modelo1.Estudiante;
+import Modelo1.Prestador;
+import Modelo1.Usuario;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
@@ -12,7 +22,7 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import logic.MiLoginHelper;
@@ -21,14 +31,15 @@ import logic.MiLoginHelper;
  *
  * @author salador
  */
+@SessionScoped
 @ManagedBean
 @RequestScoped
 
 public class Milogin {
-
      
     private String usuario; // Representa el nombre de usuario.
     private String contrasena; // Representa la contraseña. NO DEBERÍA de ser manejada como texto plano.
+    private int id;
     
     private final HttpServletRequest httpServletRequest; // Obtiene información de todas las peticiones de usuario.
     private final FacesContext faceContext; // Obtiene información de la aplicación
@@ -40,6 +51,11 @@ public class Milogin {
     Modelo1.DireccionUsuario dir;
     Modelo1.Estudiante estu;
     Modelo1.Prestador pres;
+    private MiLoginHelper helper1;
+    int IdSession=0;
+    
+    Prestador aux1;
+    Estudiante aux;
     /**
      * Creates a new instance of NewJSFManagedBean1
      */
@@ -58,7 +74,25 @@ public class Milogin {
     
     public String login1() {
                correo = helper.getLoginPorCorreo(usuario);
-        if(correo!= null){
+        if(correo!= null && contrasena != null){
+            /*-------------------------------------------*/
+        try{    
+        String ruta = "/home/salador/Documentos/Ing s/Iteracion2/archivo.txt";
+        File archivo = new File(ruta);
+        BufferedWriter bw;
+        if(archivo.exists()) {
+            bw = new BufferedWriter(new FileWriter(archivo));
+            bw.write(new Integer(correo.getIdUsuario()).toString());
+        } else {
+            bw = new BufferedWriter(new FileWriter(archivo));
+            bw.write(new Integer(correo.getIdUsuario()).toString());
+        }
+        bw.close();
+        }catch(Exception e){
+        
+        }
+            
+            /*-------------------------------------------*/
              try {
                 MessageDigest md = MessageDigest.getInstance("MD5");
                 md.update(contrasena.getBytes());
@@ -73,12 +107,9 @@ public class Milogin {
                     return "estudiante";
                   }else{
                       pres=helper.getLoginPorPrestador(correo.getIdUsuario());
-                        
-                      //if(daCuartos() == 0){
-                         // return "PrincipalUsuarioPrestador_1";
-                      //} else {
+                      
                           return "prestador";
-                      //}
+                     
                   }
                 }
             } catch (NoSuchAlgorithmException ex) {
@@ -95,8 +126,38 @@ public class Milogin {
     return "Principal";
     }
     
+     public void carga(){
+    String cadena=null;
+        BufferedReader b=null;
+        FileReader f;
+            try {
+                f = new FileReader("/home/salador/Documentos/Ing s/Iteracion2/archivo.txt"); 
+                b = new BufferedReader(f);
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+            try {
+                cadena = b.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                b.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JBean_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        helper1 = new MiLoginHelper();
+        IdSession=Integer.parseInt(cadena);
+        
+            correo=helper1.getLoginPorUsuarioN(IdSession);
+            estu=helper1.getLoginPorEstudiante(IdSession); 
+            pres=helper1.getLoginPorPrestador(IdSession);
+     }
     
     public String daUsuario(){
+        carga();
         String nom;
         nom=correo.getNombre()+ " "+correo.getApellidoPaterno()+ " " +correo.getApellidoMaterno();
         return nom;
@@ -115,12 +176,25 @@ public class Milogin {
     }
     
     public int daIdUsuario(){
+        carga();
         return correo.getIdUsuario();
     }
+    
+    public int getId(){
+        return correo.getIdUsuario();
+    }
+    public void setId(int id){
+        this.id = id;
+    }
+    
     public String daTelefono(){
         
         return correo.getTelefono();
         
+    }
+    
+    public String daCorreo1(){
+        return correo.getCorreo();
     }
     public String daCalle(){
         String res=null;
@@ -234,25 +308,25 @@ public class Milogin {
     
     public String EditarEstudiante( ){
        
-         return "Confirnacion_usuario";
+         return "modificarEstudiante";
        
     }
     
      public String EliminarEstudiante( ){
        
-         return "Confirnacion_usuario_eliminar";
+         return "eliminarEstudiante";
        
     }
  
     public String EditarPrestador( ){
        
-         return "Confirnacion_usuario_Prestador";
+         return "modificarPrestador";
        
     }
     
     public String EliminarPrestador( ){
        
-         return "Confirnacion_usuario_eliminar_Prestador";
+         return "eliminarPrestador";
     }
 }
 

@@ -38,6 +38,10 @@
               <![CDATA[ select * from Usuario as u where u.correo = :correo1]]>
     </sql-query>
     
-     
+     <sql-query name="BuscaPorUsuarioN">
+	<return alias="Usuario" class="Modelo1.Usuario"/>
+        <![CDATA[ SELECT * FROM  usuario as u 
+              where u.id_usuario = :Id1 ]]>
+    </sql-query>
     
 </hibernate-mapping>
