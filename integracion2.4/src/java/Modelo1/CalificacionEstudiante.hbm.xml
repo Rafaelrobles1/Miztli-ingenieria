@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/06/2016 06:42:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo1.CalificacionEstudiante" table="calificacion_estudiante" schema="public" optimistic-lock="version">
+        <id name="idCalificacion" type="int">
+            <column name="id_calificacion" />
+        </id>
+        <property name="idEstudiante" type="java.lang.Integer">
+            <column name="id_estudiante" />
+        </property>
+        <property name="sumP" type="java.lang.Integer">
+            <column name="sum_p" />
+        </property>
+        <property name="numE" type="java.lang.Integer">
+            <column name="num_e" />
+        </property>
+    </class>
+</hibernate-mapping>

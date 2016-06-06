@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Información Cuarto</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="salir.css"/>
+        <script src="salir.js"></script>
+    </head>
+    <body>
+        <div id="dialogoverlay"></div>
+        <div id="dialogbox">
+        <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+        </div>
+        </div>
+        <div class="bg1">
+            <div class="bg2">
+                <div class="main">
+                <!-- header -->
+                    <header>
+                      <h1><h:link id="logo" outcome="principal"/>GrupoMiztli</h1>
+                      <div class="department"> 9863 - 9867 Mill Road, LA, MG09 99HT<br/>
+                      <span>Teléfono: +1 800 000 6080</span> </div>
+                    </header>
+      <div class="box">
+        <nav>
+          <ul id="menu">
+             <li><h:link value="Principal" outcome="estudiante"/></li>
+             <li><h:link value="Información" outcome="informE"/></li>
+             <li><h:link value="Cuartos" outcome="cuartosEstudiante"/></li>
+             <li><div id="bsalir" style="margin-top:12px;margin-left:35px;margin-right:35px;font-size:135%;color:black;" onmouseover="Confirm.cambiaColor()" onmouseout="Confirm.regresaColor()" onclick="Confirm.render('Estas apunto de salir, continuar?')"><p >Salir</p></div></li>
+          </ul>
+        </nav>
+        <!-- header end -->
+        <!-- content -->
+        <article id="content">
+          <div class="box1">
+            <div class="wrapper">
+              <!--h:form id="form1">
+                    <h2>Editar Cuarto</h2>
+                    
+                </h:form-->
+              <div class="col2 pad">
+                  <h2>Información del cuarto <h:outputText value="#{jBean.id}"/></h2>
+                  <h:form id="ContactForm">
+                      <h:outputText value="#{jBean.estado}" style="font-weight:bold;color:green;"/>
+                        <p>ID: <h:inputText class="input2" id="amount" value="#{jBean.id}">
+                                <f:convertNumber integerOnly="true" type="number"/>
+                               </h:inputText></p>
+                        <p><h:outputLabel value="Nombre del dueño: "/><h:outputText value="#{jBean.duenoC}"/></p>
+                        <p><h:outputLabel value="Delegación: "/><h:outputText value="#{jBean.delegacionC}"/></p>
+                        <p><h:outputLabel value="Código Postal: "/><h:outputText value="#{jBean.codigoPostalC}"/></p>
+                        <p><h:outputLabel value="Colonia: "/><h:outputText value="#{jBean.coloniaC}"/></p>
+                        <p><h:outputLabel value="Calle y número: "/><h:outputText value="#{jBean.calleC}"/></p>
+                        <p><h:outputLabel value="Precio: "/><h:outputText value="#{jBean.precio}"/></p>
+                        <p><h:outputLabel value="Observaciones: "/><h:outputText value="#{jBean.observacionesC}"/></p>
+                        <p><h:outputLabel value="Número de recomendaciones: "/><h:outputText value="#{jBean.recomendaciones}"/></p>
+                        <p><h:outputLabel value="Calificación del prestador: "/><h:outputText value="#{jBean.califP}"/></p>
+                        <div class="button1">
+                            <h:commandButton value="Rentar" action="#{jBean.rentarCuarto(milogin.daIdU())}"/>
+                        </div>
+                  </h:form>
+              </div>
+            </div>
+          </div>
+          <div class="pad">
+            <h2>Nuestros Contactos</h2>
+            <div class="line2">
+              <div class="wrapper line3">
+                <div class="col1">
+                  <p class="pad_bot1"><strong class="color2">Tlauaches Soft</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">MIAU</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">Miztli</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!--content end-->
+      </div>
+    </div>
+  </div>
+</div>
+    </body>
+</html>

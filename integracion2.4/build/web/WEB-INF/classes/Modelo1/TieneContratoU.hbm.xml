@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/04/2016 11:24:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo1.TieneContratoU" table="tiene_contrato_u" schema="public" optimistic-lock="version">
+        <id name="contrato" type="int">
+            <column name="contrato" />
+            <generator class="assigned" />
+        </id>
+        <property name="estudiante" type="int">
+            <column name="estudiante"  not-null="true" />
+        </property>
+         <property name="prestador" type="int">
+            <column name="prestador"  not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

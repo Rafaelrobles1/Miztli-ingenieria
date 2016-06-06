@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Registrar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+    </head>
+    <body>
+        <div class="bg1">
+            <div class="bg2">
+                <div class="main">
+                <!-- header -->
+                    <header>
+                      <h1><h:link id="logo" outcome="principal"/>GrupoMiztli</h1>
+                      <div class="department"> 9863 - 9867 Mill Road, LA, MG09 99HT<br/>
+                      <span>Teléfono: +1 800 000 6080</span> </div>
+                    </header>
+      <div class="box">
+        <nav>
+          <ul id="menu">
+             <li><h:link value="Principal" outcome="principal"/></li>
+             <li><h:link value="Información" outcome="informacion"/></li>
+             <li><h:link value="Cuartos" outcome="cuartos"/></li>
+          </ul>
+        </nav>
+        <!-- header end -->
+        <!-- content -->
+        <article id="content">
+          <div class="box1">
+            <div class="wrapper">
+              <h:form id="form1">
+                    <h1>Datos personales:</h1><br/><br/><br/><br/>
+                        <div class="row">
+                            <h:inputText id="nombre" pt:placeholder="Nombre" required="true" value="#{usuarioBean.nombre}"/></div>
+                        <div class="row">
+                            <h:inputText id="apellP" pt:placeholder="Apellido Paterno" required="true" value="#{usuarioBean.apellidoPaterno}"/></div>
+                        <div class="row">
+                            <h:inputText id="apellM" pt:placeholder="Apellido Materno" required="true" value="#{usuarioBean.apellidoMaterno}"/></div>
+                        <div class="row">
+                            <h:inputText id="tel" pt:placeholder="Telefono" required="true" value="#{usuarioBean.telefono}">
+                                <f:convertNumber integerOnly="true" type="number"/>
+                                </h:inputText>
+                        </div>
+                        <h1>Información de la cuenta:</h1><br/><br/><br/><br/>
+                        <div class="row">
+                            <h:inputText id="corrEl" pt:placeholder="Correo Electrónico" required="true" value="#{usuarioBean.correo}"/></div>
+                        <div class="row">
+                            <h:inputSecret id="contr1" pt:placeholder="Contraseña" value="#{usuarioBean.contrasenya}" required="true"/></div>
+                        <div class="row">
+                            <h:inputSecret id="contr2" pt:placeholder="Confirmar Contraseña" value="#{usuarioBean.contrasenyav}" required="true"/></div>
+                        <h1>Seleccione el tipo de usuario que desea registrar:</h1>
+                        <br/><br/><br/><br/><br/>
+                        Si desea buscar un cuarto para alojarse.<br/>
+                        <div class="button1">
+                            <h:commandButton value="Estudiante" action="#{usuarioBean.registrarEstudiante()}"/> 
+                        </div><br/><br/>
+                        Si desea dar a rentar un cuarto para estudiantes.<br/>
+                        <div class="button1">
+                            <h:commandButton value="Prestador" action="#{usuarioBean.registrarPrestador()}"/>
+                        </div>
+                        <h:messages infoStyle="color: blue;list-style:none;" errorStyle="color:red;list-style:none;"/>
+                </h:form>
+              <div class="col2 pad">
+                  <h2>Página de registro</h2>
+                  <p>En esta página puedes elegir en registrarte como usuario "Prestador" o un usuario "Estudiante".
+                    Una vez registrado el usuario, al iniciar sesión tiene la oportunidadn de editar sus datos de perfil
+                  Al dar clic en "Estudiante" o "Prestador" estás aceptando nuetro aviso de privacidad mencionado a continuación:</p>
+                  
+                  <h2>Aviso de privacidad.</h2>
+                  <p>
+                        Miztli, S.A de C.V. como responsable del tratamiento de sus datos personales con domicilio en Avenida del Imán No.7 Pedregal, Coyoacán, Ciudad de México, de conformidad con lo dispuesto en los artículos 8, 15, 16,33 y 36 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares en los artículos 3, Fracciones II y VII, y 33, así como la denominación del capítulo II, del Título Segundo, de la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental, le informamos los términos y condiciones del aviso de privacidad simplificado de datos personales, Los datos personales que recopilamos los destinamos únicamente con el siguiente propósito 
+                        I.) Proveer los productos y servicios que han solicitado. 
+                        II.) Notificarle sobre nuevos productos que tengan relación con lo ya contratado o adquiridos. 
+                        III.) Comunicarle sobre los cambios en nuestros productos y servicios. 
+                        IV.) Elaborar estudios y programas que son necesarios para determinar hábitos de consumo.
+                        V.)Realizar evaluaciones periódicas de nuestros productos y servicios a efecto de mejorar la calidad de los mismos.
+                        VI.) Evaluar la calidad del servicio que brindamos y en general para dar cumplimiento a las obligaciones que hemos contraído con usted.
+                        VII.) Para contactarlo vía correo electrónico o telefónico con fines exclusivamente relacionados con el negocio.
+
+                        Usted podrá contactarnos en cualquier momento a través de nuestro correo electrónico grupo_miztli@chantli.com
+                        o directamente en nuestras instalaciones. cualquier cambio que hagamos a nuestro Aviso de Privacidad en el futuro estará disponible en nuestro portal. 
+                  </p>
+              </div>
+            </div>
+          </div>
+          <div class="pad">
+            <h2>Nuestros Contactos</h2>
+            <div class="line2">
+              <div class="wrapper line3">
+                <div class="col1">
+                  <p class="pad_bot1"><strong class="color2">Tlauaches Soft</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">MIAU</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">Miztli</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!--content end-->
+      </div>
+    </div>
+  </div>
+</div>
+    </body>
+</html>

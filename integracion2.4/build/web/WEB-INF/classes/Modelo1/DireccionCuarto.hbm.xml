@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/04/2016 11:24:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo1.DireccionCuarto" table="direccion_cuarto" schema="public" optimistic-lock="version">
+        <id name="idDireccionC" type="int">
+            <column name="id_direccion_c" />
+            <generator class="assigned" />
+        </id>
+        <property name="delegacionC" type="string">
+            <column name="delegacion_c" length="20" not-null="true" />
+        </property>
+        <property name="codigoPostalC" type="int">
+            <column name="codigo_postal_c" not-null="true" />
+        </property>
+        <property name="coloniaC" type="string">
+            <column name="colonia_c" length="20" not-null="true" />
+        </property>
+        <property name="calleC" type="string">
+            <column name="calle_c" length="50" not-null="true" />
+        </property>
+        <property name="linkUbicacion" type="string">
+            <column name="link_ubicacion" />
+        </property>
+        <set name="tieneDireccionCs" table="tiene_direccion_c" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="direccion_c" not-null="true" />
+            </key>
+            <one-to-many class="Modelo1.TieneDireccionC" />
+        </set>
+    </class>
+    <sql-query name="getDirCuartoPorId">
+	<return alias="DireccionCuarto" class="Modelo1.DireccionCuarto"/>
+        <![CDATA[ select * from direccion_cuarto where id_direccion_c=:id]]>
+    </sql-query>
+</hibernate-mapping>
