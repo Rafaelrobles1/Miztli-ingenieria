@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="Miztli" match-schema="public"/>
+  <table-filter match-name="contrato"/>
+  <table-filter match-name="tiene_direccion_u"/>
+  <table-filter match-name="cuarto"/>
+  <table-filter match-name="tiene_evaluacion_c"/>
+  <table-filter match-name="direccion_cuarto"/>
+  <table-filter match-name="evaluacion"/>
+  <table-filter match-name="tiene_cuarto"/>
+  <table-filter match-name="tiene_contrato_u"/>
+  <table-filter match-name="tiene_direccion_c"/>
+  <table-filter match-name="estudiante"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="direccion_usuario"/>
+  <table-filter match-name="prestador"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>UNAM Chancli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="micsss.css"/>
+         <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+    </h:head>
+    <h:body>
+        <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Principal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>       
+       <h1 class="mitexto"> Confirma quien eres</h1> 
+       <h2 class="mitexto">Chancli Unam</h2>
+        
+        <section class="contenedorAcceso">
+            <h:form class="formulario">
+                <h2> Estas apunto de  eliminarte coloca tu id:</h2>
+                <p><h:inputText pt:placeholder="ID" value="#{jBean_1.idUsuario}" /></p>
+                
+                <section class="seccionBotones">
+                    <h:commandButton value="Continuar" action="#{jBean_1.selecnEliminar()}"  />
+                    <h:commandButton value="Cancelar" action="#{jBean_1.cancela()}"  />
+           </section>
+            </h:form>
+        </section>
+        
+        </h:body>
+</html>

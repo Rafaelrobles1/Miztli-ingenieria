@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+  <h:head>
+    <title>Registro</title>
+    <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+  </h:head>
+  <h:body>
+              <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Principal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>
+    <section class="contenedorLogin">
+      <h:form class="formulario">
+        <h2>Registro de dirección prestador</h2> 
+        <p><h:inputText pt:placeholder="País" value="#{prestador1.paisU}" /></p>
+        <p><h:inputText pt:placeholder="Estado" value="#{prestador1.estadoU}" /></p>
+        <p><h:inputText pt:placeholder="Delegación" value="#{prestador1.delegacionU}" /></p>
+        <p><h:inputText pt:placeholder="Código Postal" value="#{prestador1.codigoPostalU}" /></p>
+        <p><h:inputText pt:placeholder="Colonia" value="#{prestador1.coloniaU}" /></p>
+        <p><h:inputText pt:placeholder="Calle y número" value="#{prestador1.calleU}" /></p>
+        <h:messages infoStyle="color: blue;list-style:none;" errorStyle="color:red;list-style:none;"/>
+        <section class="seccionBotones">
+          <h:commandButton value="Registrarse" action="#{prestador1.registrarD()}"  />
+        </section>
+      </h:form>
+    </section>
+      <section style="color:blue;width:20%;height:40%;position:relative;margin-top:80% "></section>
+  </h:body>
+</html>

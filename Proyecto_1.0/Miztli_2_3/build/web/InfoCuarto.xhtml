@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+  <h:head>
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="cssPrueba/cssFormulario.css"/>
+  </h:head>
+  <body>
+        <a name="top"></a>
+        <div id="header">Chantli UNAM</div>
+        <ul id="navtop">
+          <li><a href="Principal.xhtml">Principal</a></li>
+          <li><a href="ValidarSalida.xhtml">Salir</a></li>
+        </ul>
+    <section class="contenedorLogin">
+      <h:form>
+        <h2>Información del Cuarto-</h2>
+        <p><h:outputLabel value="Id del cuarto: "/><h:outputText value="#{cuarto1.getIdCuarto()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Nombre del Propietario: "/><h:outputText value="#{cuarto1.getNombrePrestador()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Teléfono: "/><h:outputText value="#{cuarto1.getTelefonoPrestador()}" style="font-weight:normal"/></p>
+        <p><h:outputLabel value="Correo: "/><h:outputText value="#{cuarto1.getCorreoPrestador()}" style="font-weight:normal"/></p>
+        <img style="width:380px;height:330px;" src="images/cuarto#{cuarto1.getIdCuarto()%5}.jpg"/>
+        <p><h:outputLabel value="Precio: $"/><h:outputText value="#{cuarto1.getPrecio()} mxn mensuales" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Calle y número: "/><h:outputText value="#{cuarto1.getCalleC()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Colonia: "/><h:outputText value="#{cuarto1.getColoniaC()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Delegacion: "/><h:outputText value="#{cuarto1.getDelegacionC()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="Código Postal: "/><h:outputText value="#{cuarto1.getCodigoPostalC()}" style="font-weight:bold"/></p>
+        <p><h:outputLabel value="--Mapa-- "/><h:outputText value="" style="font-weight:bold"/></p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235.2786189785167!2d-99.16626932236638!3d19.34931580165341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffdcbe23dd01%3A0xdec5f4203bfd1f90!2sCoyoac%C3%A1n%2C+Ciudad+de+M%C3%A9xico%2C+D.F.!5e0!3m2!1ses-419!2smx!4v1460247624326" width="400" height="300" frameborder="0" style="border:0" allowfullscreen="true"></iframe>    
+       <p>s
+      </p>
+      </h:form>
+        
+    </section>
+  </body>
+</html>

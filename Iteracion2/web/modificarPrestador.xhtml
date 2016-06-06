@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Modificar Prestador</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+        
+        <link rel="stylesheet" href="salir.css"/>
+        <script src="salir.js"></script>
+    </head>
+    <body>
+        <div id="dialogoverlay"></div>
+        <div id="dialogbox">
+        <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+        </div>
+        </div>
+        <div class="bg1">
+            <div class="bg2">
+                <div class="main">
+                <!-- header -->
+                    <header>
+                      <h1><h:link id="logo" outcome="principal"/>GrupoMiztli</h1>
+                      <div class="department"> 9863 - 9867 Mill Road, LA, MG09 99HT<br/>
+                      <span>Teléfono: +1 800 000 6080</span> </div>
+                    </header>
+      <div class="box">
+        <nav>
+          <ul id="menu">
+             <li><h:link value="Principal" outcome="prestador"/></li>
+             <li><h:link value="Información" outcome="informP"/></li>
+             <li><h:link value="Cuartos" outcome="cuartosP"/></li>
+             <li><h:link value="Salir" onclick="Confirm.render('Estas apunto de salir, continuar?')"/></li>
+          </ul>
+        </nav>
+        <!-- header end -->
+        <!-- content -->
+        <article id="content">
+          <div class="box1">
+            <div class="wrapper">
+              <!--h:form id="form1">
+                    <h2>Editar Cuarto</h2>
+                    
+                </h:form-->
+              <div class="col2 pad">
+                  <h2>Modificar Prestador</h2>
+                
+                  <h:form id="ContactForm">
+                      <p>Modifica las siguientes características del Prestador: </p>
+            
+                
+                      <p>ID: <h:outputText value="#{jBean_2.idUsuario}"/></p>
+                <p><h:outputText value="Nombre: *"/>                  
+                    <h:inputText class="input" value="#{jBean_2.nombre}" required="true"/>
+                </p>
+                <p><h:outputText value="Apellido Paterno: "/>
+                    <h:inputText class="input" value="#{jBean_2.apellidoPaterno}"/>
+                    </p>
+                <p><h:outputText value="Apellido Materno: "/>
+                    <h:inputText class="input" value="#{jBean_2.apellidoMaterno}"/>
+                </p>
+                
+                <p><h:outputText value="Telefono: *"/>
+                    <h:inputText class="input" value="#{jBean_2.telefono}" required="true">
+                        <f:convertNumber integerOnly="true" type="number"/>
+                    </h:inputText></p>
+                
+                <p><h:outputText value="Correo: "/>
+                    <h:inputText class="input" value="#{jBean_2.correo}"/>
+                </p>
+                
+           
+             <div class="button1">
+                            <h:commandButton value="Guardar" action="#{jBean_2.modifC()}"/>
+                        </div>
+                        <div class="button1">
+                            <h:commandButton value="Cancelar" action="prestador"/>
+                        </div><br/>
+                        <h:messages infoStyle="color: blue;list-style:none;" errorStyle="color:red;list-style:none;"/>
+                  </h:form>
+              </div>
+            </div>
+          </div>
+          <div class="pad">
+            <h2>Nuestros Contactos</h2>
+            <div class="line2">
+              <div class="wrapper line3">
+                <div class="col1">
+                  <p class="pad_bot1"><strong class="color2">Tlauaches Soft</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">MIAU</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+                <div class="col1 pad_left1">
+                  <p class="pad_bot1"><strong class="color2">Miztli</strong></p>
+                  <p class="pad_bot1">8901 Marmora Road, Glasgow, D04</p>
+                  <p class="cols"> Teléfono:<br/>
+                    Fax:<br/>
+                    Email:</p>
+                  +1 800 603 6035<br/>
+                  +1 800 889 9898<br/>
+                  <a href="#" class="color1">mail@ingenieria.org</a> </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!--content end-->
+      </div>
+    </div>
+  </div>
+</div>
+    </body>
+</html>
